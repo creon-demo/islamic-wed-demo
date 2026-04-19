@@ -8,7 +8,7 @@ export default function IntroAnimation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 3500);
+    }, 1000); // Shortened from 3500ms for faster previewing
     return () => clearTimeout(timer);
   }, []);
 
