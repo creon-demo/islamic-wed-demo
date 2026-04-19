@@ -15,8 +15,10 @@ interface PetalProps {
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const [petals, setPetals] = useState<PetalProps[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     
@@ -55,9 +57,9 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/60 to-navy opacity-80" />
       </div>
 
-      {/* Floating Petals */}
+      {/* Floating Petals - only render when mounted to prevent hydration errors */}
       <div className="absolute inset-0 z-1 pointer-events-none overflow-hidden">
-        {petals.map((p, i) => (
+        {isMounted && petals.map((p, i) => (
           <div
             key={i}
             className="absolute top-[-50px] animate-petal"
