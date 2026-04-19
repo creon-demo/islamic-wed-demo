@@ -5,14 +5,30 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ChevronDown } from "lucide-react";
 
+interface PetalProps {
+  left: string;
+  duration: string;
+  delay: string;
+  opacity: number;
+}
+
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
-  const [revealed, setRevealed] = useState(false);
+  const [petals, setPetals] = useState<PetalProps[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
-    setRevealed(true);
+    
+    // Generate random petal properties on client mount to avoid hydration mismatch
+    const newPetals = [...Array(12)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      duration: `${8 + Math.random() * 6}s`,
+      delay: `${Math.random() * 5}s`,
+      opacity: 0.3 + Math.random() * 0.3,
+    }));
+    setPetals(newPetals);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -41,15 +57,15 @@ export default function Hero() {
 
       {/* Floating Petals */}
       <div className="absolute inset-0 z-1 pointer-events-none overflow-hidden">
-        {[...Array(12)].map((_, i) => (
+        {petals.map((p, i) => (
           <div
             key={i}
             className="absolute top-[-50px] animate-petal"
             style={{
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${8 + Math.random() * 6}s`,
-              animationDelay: `${Math.random() * 5}s`,
-              opacity: 0.3 + Math.random() * 0.3,
+              left: p.left,
+              animationDuration: p.duration,
+              animationDelay: p.delay,
+              opacity: p.opacity,
             }}
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="#c9a84c">
