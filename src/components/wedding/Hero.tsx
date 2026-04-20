@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface PetalProps {
   left: string;
@@ -23,6 +22,7 @@ export default function Hero() {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     
+    // Generate random petal properties only on the client
     const newPetals = [...Array(15)].map(() => ({
       left: `${Math.random() * 100}%`,
       duration: `${10 + Math.random() * 8}s`,
@@ -38,7 +38,13 @@ export default function Hero() {
   const coupleName2 = "Zaid";
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-bg");
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <section className="relative h-screen w-full bg-navy flex items-center justify-center">
+        <div className="absolute inset-0 bg-navy" />
+      </section>
+    );
+  }
 
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">

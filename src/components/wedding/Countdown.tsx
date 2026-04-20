@@ -39,7 +39,7 @@ export default function Countdown() {
     return (
       <div className="flex flex-col items-center">
         <div className="relative w-20 h-24 md:w-32 md:h-40 perspective-1000 group">
-          <div className="absolute inset-0 glass-card flex items-center justify-center overflow-hidden rounded-lg">
+          <div className="absolute inset-0 glass-card flex items-center justify-center overflow-hidden rounded-lg transition-all duration-500 group-hover:border-gold/60">
             <span className="font-headline text-4xl md:text-7xl text-gold transition-all duration-500 group-hover:scale-110">
               {displayValue}
             </span>

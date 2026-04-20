@@ -127,7 +127,7 @@ export default function RSVP() {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "relative w-full py-5 rounded-full bg-gold text-navy font-body font-bold uppercase tracking-[0.4em] text-xs transition-all hover:scale-[1.01] active:scale-95 shadow-xl overflow-hidden group/btn",
+                  "relative w-full py-5 rounded-full bg-gold text-navy font-body font-bold uppercase tracking-[0.4em] text-xs transition-all hover:scale-[1.01] shadow-xl overflow-hidden group/btn",
                   isSubmitting && "opacity-70 cursor-not-allowed"
                 )}
               >

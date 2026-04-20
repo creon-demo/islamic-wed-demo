@@ -61,11 +61,11 @@ export default function Timeline() {
         </ScrollReveal>
 
         {/* Desktop Vertical/Horizontal Mix Timeline */}
-        <div className="relative pt-12">
+        <div className="relative pt-12" ref={lineRef}>
           {/* Connecting Line Animation */}
           <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gold/10 hidden lg:block">
             <div 
-              className="w-full bg-gold transition-all duration-300 ease-out"
+              className="w-full bg-gold transition-all duration-700 ease-out"
               style={{ height: `${lineWidth}%` }}
             />
           </div>
@@ -80,7 +80,7 @@ export default function Timeline() {
                 )}
               >
                 <div className="flex-1 px-8 mb-6 lg:mb-0">
-                  <ScrollReveal delay={100}>
+                  <ScrollReveal delay={100} variant="fade-up">
                     <h3 className="font-headline text-2xl md:text-3xl text-ivory mb-2">
                       {event.title}
                     </h3>
@@ -91,7 +91,7 @@ export default function Timeline() {
 
                 <div className="relative z-10 flex items-center justify-center">
                   <ScrollReveal delay={200}>
-                    <div className="w-16 h-16 md:w-20 md:h-20 glass-card rounded-full flex items-center justify-center border-gold border-2 shadow-[0_0_20px_rgba(201,168,76,0.4)]">
+                    <div className="w-16 h-16 md:w-20 md:h-20 glass-card rounded-full flex items-center justify-center border-gold border-2 shadow-[0_0_20px_rgba(201,168,76,0.4)] transition-transform duration-500 hover:scale-110">
                       <event.icon className="text-gold" size={28} />
                     </div>
                   </ScrollReveal>
