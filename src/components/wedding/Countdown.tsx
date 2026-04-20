@@ -12,8 +12,10 @@ interface TimeLeft {
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Set demo date 3 months from now
     const targetDate = new Date();
     targetDate.setMonth(targetDate.getMonth() + 3);
@@ -23,15 +25,17 @@ export default function Countdown() {
       const distance = targetDate.getTime() - now;
 
       setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        days: Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24))),
+        hours: Math.max(0, Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))),
+        minutes: Math.max(0, Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))),
+        seconds: Math.max(0, Math.floor((distance % (1000 * 60)) / 1000)),
       });
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
+
+  if (!mounted) return null;
 
   const FlipUnit = ({ value, label }: { value: number; label: string }) => {
     const displayValue = value.toString().padStart(2, "0");
