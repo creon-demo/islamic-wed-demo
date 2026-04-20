@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ScrollReveal from "./ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export default function RSVP() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,9 +19,10 @@ export default function RSVP() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      // Confetti logic could be here
     }, 1500);
   };
+
+  if (!mounted) return null;
 
   return (
     <section id="rsvp" className="py-24 md:py-32 bg-navy-lighter/10 relative overflow-hidden">
