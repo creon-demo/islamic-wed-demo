@@ -35,7 +35,9 @@ export default function Countdown() {
     return () => clearInterval(timer);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return (
+    <section className="py-24 bg-navy h-[400px]" /> // Placeholder height to prevent jump
+  );
 
   const FlipUnit = ({ value, label }: { value: number; label: string }) => {
     const displayValue = value.toString().padStart(2, "0");
