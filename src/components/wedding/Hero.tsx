@@ -103,7 +103,7 @@ export default function Hero() {
             {coupleName1.split("").map((char, i) => (
               <span
                 key={i}
-                className="font-headline text-6xl md:text-[120px] text-ivory inline-block opacity-0 scale-75 animate-[letter-reveal_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+                className="font-headline text-6xl md:text-[120px] text-ivory inline-block opacity-0 scale-75 animate-letter-reveal"
                 style={{ animationDelay: `${0.8 + i * 0.08}s` }}
               >
                 {char}
@@ -111,7 +111,8 @@ export default function Hero() {
             ))}
           </span>
           <span
-            className="font-headline text-4xl md:text-8xl text-gold self-center opacity-0 animate-[fade-in_1.5s_ease-out_1.5s_forwards]"
+            className="font-headline text-4xl md:text-8xl text-gold self-center opacity-0 animate-fade-in"
+            style={{ animationDelay: '1.5s' }}
           >
             &
           </span>
@@ -119,7 +120,7 @@ export default function Hero() {
             {coupleName2.split("").map((char, i) => (
               <span
                 key={i}
-                className="font-headline text-6xl md:text-[120px] text-ivory inline-block opacity-0 scale-75 animate-[letter-reveal_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+                className="font-headline text-6xl md:text-[120px] text-ivory inline-block opacity-0 scale-75 animate-letter-reveal"
                 style={{ animationDelay: `${1.2 + i * 0.08}s` }}
               >
                 {char}
@@ -128,7 +129,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <div className="space-y-6 opacity-0 animate-[fade-in_1.5s_ease-out_2.5s_forwards]">
+        <div className="space-y-6 opacity-0 animate-fade-in" style={{ animationDelay: '2.5s' }}>
           <p className="font-body text-ivory/60 text-sm md:text-base uppercase tracking-[0.6em] mb-2">
             Together with our families
           </p>
@@ -140,27 +141,13 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 opacity-0 animate-[fade-in_1.5s_ease-out_3.5s_forwards]">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 opacity-0 animate-fade-in" style={{ animationDelay: '3.5s' }}>
         <div className="flex flex-col items-center space-y-4">
           <p className="font-body text-[10px] text-gold/60 uppercase tracking-[0.4em] rotate-90 translate-y-[-20px]">Scroll</p>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-gold via-gold/50 to-transparent animate-[shimmer-sweep_2s_linear_infinite]" />
+          <div className="w-[1px] h-20 bg-gradient-to-b from-gold via-gold/50 to-transparent animate-shimmer" />
           <ChevronDown className="text-gold animate-bounce" size={20} />
         </div>
       </div>
-
-      <style jsx global>{`
-        @keyframes letter-reveal {
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        @keyframes fade-in {
-          to {
-            opacity: 1;
-          }
-        }
-      `}</style>
     </section>
   );
-}
+}

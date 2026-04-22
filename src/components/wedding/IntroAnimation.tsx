@@ -4,22 +4,38 @@ import { useEffect, useState } from "react";
 
 export default function IntroAnimation() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Start fading out after 2 seconds
+    const fadeTimer = setTimeout(() => {
+      setIsFading(true);
+    }, 2000);
+
+    // Completely remove component after 3 seconds (2s delay + 1s fade)
+    const removeTimer = setTimeout(() => {
       setIsVisible(false);
-    }, 2000); 
-    return () => clearTimeout(timer);
+    }, 3000);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
   }, []);
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-navy transition-opacity duration-1000 ease-in-out">
+    <div 
+      className={cn(
+        "fixed inset-0 z-[100] flex items-center justify-center bg-navy transition-opacity duration-1000 ease-in-out",
+        isFading ? "opacity-0" : "opacity-100"
+      )}
+    >
       <div className="relative w-64 h-64 md:w-96 md:h-96">
         <svg
           viewBox="0 0 100 100"
-          className="w-full h-full fill-none stroke-gold stroke-[0.5] animate-[mandala-draw_3s_ease-out_forwards]"
+          className="w-full h-full fill-none stroke-gold stroke-[0.5] animate-mandala-draw"
           style={{ strokeDasharray: 300, strokeDashoffset: 300 }}
         >
           {/* Detailed Ornate Mandala Paths */}
@@ -37,7 +53,7 @@ export default function IntroAnimation() {
           <path d="M50 20 L55 35 L70 40 L55 45 L50 60 L45 45 L30 40 L45 35 Z" fill="none" />
         </svg>
       </div>
-      <div className="absolute bottom-12 text-gold font-headline text-lg tracking-[0.3em] uppercase opacity-0 animate-[fade-in_1s_ease-out_1s_forwards]">
+      <div className="absolute bottom-12 text-gold font-headline text-lg tracking-[0.3em] uppercase opacity-0 animate-fade-in" style={{ animationDelay: '1s' }}>
         Bismillah ir-Rahman ir-Rahim
       </div>
     </div>
