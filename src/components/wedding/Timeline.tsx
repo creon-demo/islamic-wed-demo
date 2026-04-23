@@ -63,9 +63,9 @@ export default function Timeline() {
         {/* Desktop Vertical/Horizontal Mix Timeline */}
         <div className="relative pt-12" ref={lineRef}>
           {/* Connecting Line Animation */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gold/10 hidden lg:block">
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gold/10">
             <div 
-              className="w-full bg-gold transition-all duration-700 ease-out"
+              className="w-full bg-gold transition-all duration-700 ease-out shadow-[0_0_10px_rgba(201,168,76,0.5)]"
               style={{ height: `${lineWidth}%` }}
             />
           </div>
