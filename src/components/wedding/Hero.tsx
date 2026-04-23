@@ -55,7 +55,7 @@ export default function Hero() {
       >
         <Image
           src={heroImage?.imageUrl || ""}
-          alt="Luxury Mosque"
+          alt={heroImage?.description || "Wedding Celebration"}
           fill
           priority
           className="object-cover transition-opacity duration-1000"

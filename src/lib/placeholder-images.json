@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Grand mosque palace at night",
-      "imageUrl": "https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=2000",
-      "imageHint": "mosque night"
+      "description": "Wedding celebration background",
+      "imageUrl": "https://picsum.photos/seed/islamic-hero/1920/1080",
+      "imageHint": "wedding background"
     },
     {
       "id": "wedding1",
