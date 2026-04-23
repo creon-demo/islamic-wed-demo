@@ -39,7 +39,7 @@ export default function Gallery() {
                     src={imgData?.imageUrl || ""}
                     alt={imgData?.description || "Gallery Photo"}
                     fill
-                    className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    className="object-cover transition-transform duration-1000 ease-expo group-hover:scale-105"
                     data-ai-hint={imgData?.imageHint}
                   />
                   {/* Subtle Overlay */}

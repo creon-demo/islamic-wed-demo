@@ -111,6 +111,9 @@ export default {
         'fade-in': 'fade-in 1.5s ease-out forwards',
         'letter-reveal': 'letter-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
+      transitionTimingFunction: {
+        'expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
