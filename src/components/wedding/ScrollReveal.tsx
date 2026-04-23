@@ -28,7 +28,10 @@ export default function ScrollReveal({
           }, delay);
         }
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
+      }
     );
 
     if (ref.current) observer.observe(ref.current);
