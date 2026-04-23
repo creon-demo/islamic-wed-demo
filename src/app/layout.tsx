@@ -1,6 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
 
+import ScrollProgress from "@/components/wedding/ScrollProgress";
+
 export const metadata: Metadata = {
   title: 'Aisha & Zaid: Grand Nuptials',
   description: 'Join us for the luxury wedding celebration of Aisha and Zaid.',
@@ -19,6 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
+        <ScrollProgress />
         {children}
       </body>
     </html>

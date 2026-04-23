@@ -31,7 +31,11 @@
   * {
     @apply border-border;
   }
-  body {
+  html {
+  scroll-behavior: smooth;
+}
+
+body {
     @apply bg-background text-foreground font-body selection:bg-gold/30 selection:text-gold;
     scroll-behavior: smooth;
   }
