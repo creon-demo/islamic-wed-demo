@@ -23,31 +23,39 @@ export default function ScrollReveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIntersecting(true);
-          }, delay);
+          setIntersecting(true);
         }
       },
       { 
-        threshold: 0.05,
-        rootMargin: '0px 0px -20px 0px'
+        threshold: 0.01,
+        rootMargin: '0px 0px 50px 0px'
       }
     );
 
     if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [delay]);
 
-  const variantClass = variant === "clip" ? "clip-reveal" : "fade-up-reveal";
+    // Safety fallback
+    const safetyTimer = setTimeout(() => {
+      setIntersecting(true);
+    }, 5000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(safetyTimer);
+    };
+  }, []);
 
   return (
     <div
       ref={ref}
       className={cn(
-        variantClass,
-        isIntersecting && "active",
+        "transition-all duration-1000 ease-out",
+        isIntersecting 
+          ? "opacity-100 translate-y-0" 
+          : "opacity-0 translate-y-10",
         className
       )}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>
