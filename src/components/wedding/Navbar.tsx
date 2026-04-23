@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -40,12 +41,12 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-[1100px] mx-auto flex items-center justify-between">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="font-headline text-2xl md:text-3xl text-gold tracking-widest hover:scale-105 transition-transform"
           >
             A & Z
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
